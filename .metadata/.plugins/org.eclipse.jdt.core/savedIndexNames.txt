@@ -1,0 +1,4 @@
+INDEX VERSION 1.134+C:\Users\DELL\eclipse-workspace\Listas - Exercicio 01\.metadata\.plugins\org.eclipse.jdt.core
+2238323608.index
+3133868695.index
+1865797976.index

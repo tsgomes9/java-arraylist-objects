@@ -1,0 +1,66 @@
+package application;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import entities.Employee;
+
+public class Main {
+
+	public static void main(String[] args) {
+
+		Scanner sc = new Scanner(System.in);
+		
+		ArrayList<Employee> EmployeeList = new ArrayList<>();
+		int EmployeeId;
+		String EmployeeName;
+		double EmployeeSalary, Percentage, EmployeeNewSalary;
+		int IdFilter;
+				
+		int Quantity;
+		
+		System.out.println("How many employees will be registred?");
+		Quantity = sc.nextInt();
+		
+		for (int i = 0 ; i < Quantity ; i++) {
+			
+			System.out.printf("\nEmployee #%d\n", i+1);
+			System.out.print("Id: ");
+			EmployeeId = sc.nextInt();
+			
+			sc.nextLine();
+			System.out.print("Name: ");
+			EmployeeName = sc.nextLine();
+			
+			System.out.print("Salary: ");
+			EmployeeSalary = sc.nextDouble();
+			
+			EmployeeList.add(new Employee(EmployeeId, EmployeeName, EmployeeSalary));
+			
+		}
+		
+		System.out.println("\nEnter the employee id that will have salary increase");
+		IdFilter = sc.nextInt();
+		
+		System.out.println("Enter the percentage: ");
+		Percentage = sc.nextDouble();
+		
+		Employee filterEmployee = EmployeeList.stream().filter(e -> e.getEmployeeId() == IdFilter).findFirst().orElse(null);
+		
+		//CONCLUIR: CALCULAR NOVO SALARIO, ALTERAR NA CLASSE E LISTAR FUNCIONARIOS COM SALARIO ATUALIZADO
+		EmployeeNewSalary = filterEmployee.getEmployeeSalary() * (Percentage/100);
+		
+		
+		System.out.println("\n------------------------------\n");
+		
+		for (Employee employee : EmployeeList) {
+			System.out.println(employee.getEmployeeId() + ", " + employee.getEmployeeName() + ", " + employee.getEmployeeSalary());
+		}
+		
+		System.out.println(filterEmployee);
+
+
+		sc.close();
+	}
+
+}
